@@ -1,6 +1,6 @@
-data "aws_ami" "example" {
-  most_recent      = true
-  owners           = ["099720109477"]
+data "aws_ami" "ubuntu_ami" {
+  most_recent = true
+  owners      = ["099720109477"]
 
   filter {
     name   = "name"
@@ -23,7 +23,17 @@ data "aws_ami" "example" {
   }
 
   filter {
-    name = "image-type"
+    name   = "image-type"
     values = ["machine"]
   }
+}
+
+resource "aws_default_vpc" "default" {}
+
+data "http" "my_ip" {
+  url = "https://checkip.amazonaws.com/"
+}
+
+locals {
+  my_ip = chomp(data.http.my_ip.response_body)
 }
