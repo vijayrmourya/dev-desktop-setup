@@ -5,6 +5,7 @@ module "instane_with_key_iam" {
   instance_type                       = var.instance_type
   associate_public_ip_address_setting = var.instance_public_ip_enable
   instance_tags                       = var.tag_instance
+  user_data_script_path               = "${path.module}/user_data.sh"
 
   security_group_name        = var.security_group_name
   security_group_description = var.sg_description
