@@ -1,6 +1,8 @@
 module "instane_with_key_iam" {
   source = "../terraform-modules/instance_with_key_pair"
 
+  platform_type = "Linux"
+
   ami_id                              = data.aws_ami.ubuntu_ami.id
   instance_type                       = var.instance_type
   associate_public_ip_address_setting = var.instance_public_ip_enable

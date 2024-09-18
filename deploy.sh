@@ -31,6 +31,7 @@ main() {
 
   echo "TERRAFORM APPLYING"
   terraform apply --auto-approve
+  terraform output -json > output.json
   check_status || return 1
 
   echo "Terraform operations completed successfully."
